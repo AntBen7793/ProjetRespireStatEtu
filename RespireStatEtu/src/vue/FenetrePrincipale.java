@@ -1,4 +1,4 @@
-package src.vue;
+package vue;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -35,7 +35,7 @@ public class FenetrePrincipale extends JFrame{
 		File f;
 		String message="";
         do {
-        	csvPath = JOptionPane.showInputDialog( "Entrez le chemin vers le fichier : "+csvFileName );
+        	csvPath = "C:/Users/atdf2/eclipse-workspace/RespireStatEtu/";
 			f = new File(csvPath+"/"+csvFileName);
 			if(!f.exists())
 				message = "Le fichier n'a pas été trouvé.";
@@ -138,21 +138,25 @@ public class FenetrePrincipale extends JFrame{
 		onglets.addTab("Moyenne par ville 2017", onglet3);
 
 		//ONGLET 4
-		//TODO Faire l'onglet 4 : il ressemble beaucoup à l'onglet 3 !
 		JPanel onglet4 = new JPanel();
 		
-		//TODO Créer les 3 HashMap
-		//TODO Parcourir la liste des départements pour mettre dans les 3 HashMap le département (clé) et la moyenne de chaque polluant (valeur)
-		//TODO Créer un objet TableauStat3 dans lequel vous met
+		HashMap<String, Double> moyenneDepartementsNO2 = new HashMap<String, Double>();
+		HashMap<String, Double> moyenneDepartementsPM10 = new HashMap<String, Double>();
+		HashMap<String, Double> moyenneDepartementsPM25 = new HashMap<String, Double>();
+		for(String Departement : ConvertCSV.listeDepartements) {
+			moyenneVillesNO2.put(Departement, StatEtab.getMoyennePolluantNO2Ville(ConvertCSV.listeEtab, Departement, 2017));
+			moyenneVillesPM10.put(Departement, StatEtab.getMoyennePolluantPM10Ville(ConvertCSV.listeEtab, Departement, 2017));
+			moyenneVillesPM25.put(Departement, StatEtab.getMoyennePolluantPM25Ville(ConvertCSV.listeEtab, Departement, 2017));
+		}
+		TableauStat3 tab3 = new TableauStat3(moyenneDepartementsNO2, moyenneDepartementsPM10,moyenneDepartementsPM25);
 
 
-		//TODO Décommenter les lignes suivantes
-		//table = new JTable(tab3);
-		//spane = new JScrollPane(table);
+		table = new JTable(tab3);
+		spane = new JScrollPane(table);
 
-		//onglet4.add(spane);
+		onglet4.add(spane);
 
-		//onglets.addTab("Moyenne par département 2017", onglet4);
+		onglets.addTab("Moyenne par département 2017", onglet4);
 
 
 		panel.add(onglets);
