@@ -106,7 +106,7 @@ public class Etablissement {
 		return polluStatPM25;
 	}
 
-	
+
 	@Override
 	public String toString() {
 		return "Etablissement [identifiant=" + identifiant + ", lieu=" + lieu + ", type=" + type + ", coordonnees="

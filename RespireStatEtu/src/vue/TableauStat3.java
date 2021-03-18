@@ -33,7 +33,7 @@ public class TableauStat3 extends AbstractTableModel{
 	}
 	
 
-	@Override
+	@Override 
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch (columnIndex) {
 		case 0:
