@@ -78,7 +78,23 @@ public class TableauStat1 extends AbstractTableModel{
 
 			case 4:
 				// PM25
-				return etabs[columnIndex-1].getPollutionNO2(annee);
+				 switch(columnIndex-1) {
+	                case 0:
+	                    return etabs[columnIndex-1].getPollutionNO2(annee);
+	                    
+	                case 1:
+	                    return etabs[columnIndex-1].getPollutionPM10(annee);
+	                    
+	                case 2:
+	                    return etabs[columnIndex-1].getPollutionPM25(annee);
+
+	                }
+			case 5:
+                double x=48.853;
+                double y=2.35;
+                double latitude =etabs[columnIndex-1].getCoordonnees().getLatitude();
+                double longitude =etabs[columnIndex-1].getCoordonnees().getLongitude();
+                return Math.sqrt((latitude-x)*(latitude-x)+(longitude-y)*(longitude-y));
 
 			default:
 				throw new IllegalArgumentException();
