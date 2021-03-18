@@ -9,7 +9,6 @@ public class Etablissement {
 	private Type type;
 	private CoordGPS coordonnees;
 	private String nomEtablissement;
-	private String geometry;
 	private Map<Integer, Double> polluStatNO2;
 	private Map<Integer, Double> polluStatPM10;
 	private Map<Integer, Double> polluStatPM25;
@@ -19,7 +18,6 @@ public class Etablissement {
 		lieu = l;
 		type = t;
 		nomEtablissement = nom;
-		this.geometry = geometry;
 		coordonnees = new CoordGPS(geometry);
 		polluStatNO2 = new HashMap<Integer, Double>();
 		polluStatPM10 = new HashMap<Integer, Double>();
@@ -93,9 +91,6 @@ public class Etablissement {
 		return nomEtablissement;
 	}
 
-	public String getGeometry() {
-		return geometry;
-	}
 
 	public Map<Integer, Double> getPolluStatNO2() {
 		return polluStatNO2;

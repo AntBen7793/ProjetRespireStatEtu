@@ -24,7 +24,7 @@ public class TableauStat3 extends AbstractTableModel{
 	}
 	@Override
 	public String getColumnName(int columnIndex) {
-		return "columnIndex";
+		return entetes[columnIndex];
 	}
 
 	@Override

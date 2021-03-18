@@ -35,10 +35,10 @@ public class FenetrePrincipale extends JFrame{
 		File f;
 		String message="";
         do {
-        	csvPath = "C:/Users/atdf2/eclipse-workspace/RespireStatEtu/";
+        	csvPath = "C:/Users/atdf2/eclipse-workspace/RespireStatEtu";
 			f = new File(csvPath+"/"+csvFileName);
 			if(!f.exists())
-				message = "Le fichier n'a pas été trouvé.";
+				message = "Le fichier n'a pas �t� trouv�.";
 			else
 				message = "Le fichier a été trouvé.";
 			JOptionPane.showMessageDialog(null, message+"\n"+csvPath+"/"+csvFileName);	
@@ -96,7 +96,8 @@ public class FenetrePrincipale extends JFrame{
 				Etablissement[] etabs = new Etablissement[3];
 				etabs[0] = etabNO2;
 				etabs[1] = etabPM10;
-				etabs[2] = etabPM25;tab1 = new TableauStat1(etabs, annee);
+				etabs[2] = etabPM25;
+				tab1= new TableauStat1(etabs, annee);
 
 				table = new JTable(tab1);
 				spane =new JScrollPane(table);
@@ -107,7 +108,7 @@ public class FenetrePrincipale extends JFrame{
 				table.setPreferredScrollableViewportSize(table.getPreferredSize());
 				table.setFillsViewportHeight(true);
 
-				//onglet2.add(labelTableau,c);
+				onglet2.add(labelTableau,c);
 				onglet2.add(spane,c);
 				c.gridy++;
 			}
