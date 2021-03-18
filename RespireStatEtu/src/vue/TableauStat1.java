@@ -26,7 +26,7 @@ public class TableauStat1 extends AbstractTableModel{
 
 	@Override
 	public int getRowCount() {
-		return 5;
+		return 6;
 	}
 	
 	@Override
