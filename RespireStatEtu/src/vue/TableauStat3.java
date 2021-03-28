@@ -33,22 +33,32 @@ public class TableauStat3 extends AbstractTableModel{
 	}
 	
 
-	@Override 
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		switch (columnIndex) {
+		if(columnIndex==0){
+			switch (rowIndex) {
 		case 0:
 			return ConvertCSV.listeDepartements.get(rowIndex);
-		case 1:
-			return moyenneDepartementsNO2.get(ConvertCSV.listeDepartements.get(rowIndex));
-
-		case 2:
-			return moyenneDepartementsPM10.get(ConvertCSV.listeDepartements.get(rowIndex));
-
-		case 3:
-			return moyenneDepartementsPM25.get(ConvertCSV.listeDepartements.get(rowIndex));
-
 		default:
 			throw new IllegalArgumentException();
 		}
+		}else {
+			switch (rowIndex) {
+		case 0:
+			switch(columnIndex-1) {
+		case 0:
+			return moyenneDepartementsNO2.get(ConvertCSV.listeDepartements.get(rowIndex));
+
+		case 1:
+			return moyenneDepartementsPM10.get(ConvertCSV.listeDepartements.get(rowIndex));
+
+		case 2:
+			return moyenneDepartementsPM25.get(ConvertCSV.listeDepartements.get(rowIndex));
+
+		}
+			default:
+				throw new IllegalArgumentException();
 	}
+}
+}
 }
