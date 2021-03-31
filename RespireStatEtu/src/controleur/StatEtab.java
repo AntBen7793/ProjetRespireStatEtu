@@ -58,11 +58,9 @@ public class StatEtab {
 	 */
 	public static double getMoyennePolluantPM25Dpt(ArrayList<Etablissement> l, String dpt, int annee) {
 		double moy = 0;
-		int n=0;
 		for(Etablissement e : l) {
 			if(e.getLieu().getDepartement().equals(dpt)) {
 				moy+=e.getPollutionPM25(annee);
-				n++;
 			}
 		}
 		return moy/l.size();
