@@ -58,9 +58,11 @@ public class StatEtab {
 	 */
 	public static double getMoyennePolluantPM25Dpt(ArrayList<Etablissement> l, String dpt, int annee) {
 		double moy = 0;
+		int n=0;
 		for(Etablissement e : l) {
 			if(e.getLieu().getDepartement().equals(dpt)) {
 				moy+=e.getPollutionPM25(annee);
+				n++;
 			}
 		}
 		return moy/l.size();
@@ -129,10 +131,9 @@ public class StatEtab {
 	 * Flavie Tonon
 	 */
 	public static Etablissement getPlusPolluantNO2(ArrayList<Etablissement> l, int annee) {
-		Etablissement plus = null;
-		double pollution=0;
+		Etablissement plus = l.get(0);
 		for(Etablissement e : l) {
-			if(pollution<e.getPollutionNO2(annee)) {
+			if(e.getPollutionNO2(annee)>= plus.getPollutionNO2(annee)) {
 				plus = e;
 			}
 		}
@@ -146,10 +147,9 @@ public class StatEtab {
 	 * Flavie Tonon
 	 */
 	public static Etablissement getPlusPolluantPM10(ArrayList<Etablissement> l, int annee) {
-		Etablissement plus = null;
-		double pollution=0;
+		Etablissement plus = l.get(0);
 		for(Etablissement e : l) {
-			if(pollution<e.getPollutionPM10(annee)) {
+			if(e.getPollutionNO2(annee)>= plus.getPollutionNO2(annee)) {
 				plus = e;
 			}
 		}
@@ -163,10 +163,9 @@ public class StatEtab {
 	 * Flavie Tonon
 	 */
 	public static Etablissement getPlusPolluantPM25(ArrayList<Etablissement> l, int annee) {
-		Etablissement plus = null;
-		double pollution=0;
+		Etablissement plus = l.get(0);
 		for(Etablissement e : l) {
-			if(pollution<e.getPollutionPM25(annee)) {
+			if(e.getPollutionNO2(annee)>= plus.getPollutionNO2(annee)) {
 				plus = e;
 			}
 		}

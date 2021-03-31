@@ -13,6 +13,9 @@ import model.Etablissement;
 public class ConvertCSV {
 	public static ArrayList<Etablissement> listeEtab = new ArrayList<Etablissement>();
 	public static ArrayList<String> listeVilles = new ArrayList<String>();
+	public static ArrayList<String> listeVillesNO2 = new ArrayList<String>();
+	public static ArrayList<String> listeVillesPM10 = new ArrayList<String>();
+	public static ArrayList<String> listeVillesPM25 = new ArrayList<String>();
 	public static ArrayList<String> listeDepartements = new ArrayList<String>();
 
 	public static void lire(String fileName) {
@@ -46,6 +49,9 @@ public class ConvertCSV {
 				
 				if(!listeVilles.contains(et.getLieu().getVille())) {
 					listeVilles.add(et.getLieu().getVille());
+					listeVillesNO2.add(et.getLieu().getVille());
+					listeVillesPM10.add(et.getLieu().getVille());
+					listeVillesPM25.add(et.getLieu().getVille());
 				}
 				if(!listeDepartements.contains(et.getLieu().getDepartement())) {
 					listeDepartements.add(et.getLieu().getDepartement());

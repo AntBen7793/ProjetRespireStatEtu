@@ -51,8 +51,11 @@ public class TableauStat1 extends AbstractTableModel{
 				return "Département";
 
 			case 4:
-				// PM25
+				// taux
 				return "Taux";
+			case 5:
+				// P
+				return "Distance";
 
 			default:
 				throw new IllegalArgumentException();
@@ -77,24 +80,47 @@ public class TableauStat1 extends AbstractTableModel{
 				return etabs[columnIndex-1].getLieu().getDepartement();
 
 			case 4:
-				// PM25
-				 switch(columnIndex-1) {
-	                case 0:
-	                    return etabs[columnIndex-1].getPollutionNO2(annee);
-	                    
-	                case 1:
-	                    return etabs[columnIndex-1].getPollutionPM10(annee);
-	                    
-	                case 2:
-	                    return etabs[columnIndex-1].getPollutionPM25(annee);
+				switch(columnIndex-1) {
+                case 0:
+                    return etabs[columnIndex-1].getPollutionNO2(annee);
+                    
+                case 1:
+                    return etabs[columnIndex-1].getPollutionPM10(annee);
+                    
+                case 2:
+                    return etabs[columnIndex-1].getPollutionPM25(annee);
 
-	                }
+                }
 			case 5:
-                double x=48.853;
+				
+				
+				
+				
+                /*double x=48.853;
                 double y=2.35;
                 double latitude =etabs[columnIndex-1].getCoordonnees().getLatitude();
                 double longitude =etabs[columnIndex-1].getCoordonnees().getLongitude();
-                return Math.sqrt((latitude-x)*(latitude-x)+(longitude-y)*(longitude-y));
+                return Math.sqrt((latitude-x)*(latitude-x)+(longitude-y)*(longitude-y));*/
+				double lat = 48.8536169894676;
+				double lon = 2.348761269654609;
+                double latitude =etabs[columnIndex-1].getCoordonnees().getLatitude();
+                double longitude =etabs[columnIndex-1].getCoordonnees().getLongitude();
+				final int R = 6371; // Radious of the earth
+				 Double latDistance = (latitude-lat)* Math.PI / 180;
+				 Double lonDistance = (longitude-lon)* Math.PI / 180;
+				 Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) + 
+				 Math.cos((lat)* Math.PI / 180) * Math.cos((latitude)* Math.PI / 180) * 
+				 Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+				 Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+				 Double distance = R * c;
+				 double y1=lat;
+				 double x1=lon;
+				 double x2=latitude;
+				 double y2=longitude;
+				 //distance= Math.sqrt(((y2 - y1)*(y2 - y1)) + ((x2 - x1)*(x2 - x1)));
+				 //distance= 200*distance;
+				 distance=(distance-6793)*3;
+				 return distance+"km";
 
 			default:
 				throw new IllegalArgumentException();

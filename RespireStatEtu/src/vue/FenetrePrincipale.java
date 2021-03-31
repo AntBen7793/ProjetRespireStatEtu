@@ -35,10 +35,10 @@ public class FenetrePrincipale extends JFrame{
 		File f;
 		String message="";
         do {
-        	csvPath = "C:/Users/atdf2/eclipse-workspace/RespireStatEtu";
+        	csvPath = "/Users/antoinebenoit/eclipse-workspace/RespireStatEtu/";
 			f = new File(csvPath+"/"+csvFileName);
 			if(!f.exists())
-				message = "Le fichier n'a pas �t� trouv�.";
+				message = "Le fichier n'a pas été trouvé.";
 			else
 				message = "Le fichier a été trouvé.";
 			JOptionPane.showMessageDialog(null, message+"\n"+csvPath+"/"+csvFileName);	
@@ -46,7 +46,7 @@ public class FenetrePrincipale extends JFrame{
 		ConvertCSV.chargerEtablissements(csvPath+"/"+csvFileName);
 		
 		setTitle("RespireStat");
-		setSize(960,720);
+		setSize(1260,1050);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +59,7 @@ public class FenetrePrincipale extends JFrame{
 
 		//ONGLETS
 		JTabbedPane onglets = new JTabbedPane(SwingConstants.TOP);
-		onglets.setPreferredSize(new Dimension(900,680));
+		onglets.setPreferredSize(new Dimension(1200,1080));
 
 		//ONGLET 1
 		JPanel onglet1 = new JPanel();
@@ -96,19 +96,18 @@ public class FenetrePrincipale extends JFrame{
 				Etablissement[] etabs = new Etablissement[3];
 				etabs[0] = etabNO2;
 				etabs[1] = etabPM10;
-				etabs[2] = etabPM25;
-				tab1= new TableauStat1(etabs, annee);
+				etabs[2] = etabPM25;tab1 = new TableauStat1(etabs, annee);
 
 				table = new JTable(tab1);
 				spane =new JScrollPane(table);
 
 				table.setCellSelectionEnabled(false);
 
-				table.setPreferredSize(new Dimension(500,80));
+				table.setPreferredSize(new Dimension(800,100));
 				table.setPreferredScrollableViewportSize(table.getPreferredSize());
 				table.setFillsViewportHeight(true);
 
-				onglet2.add(labelTableau,c);
+				//onglet2.add(labelTableau,c);
 				onglet2.add(spane,c);
 				c.gridy++;
 			}
@@ -145,9 +144,9 @@ public class FenetrePrincipale extends JFrame{
 		HashMap<String, Double> moyenneDepartementsPM10 = new HashMap<String, Double>();
 		HashMap<String, Double> moyenneDepartementsPM25 = new HashMap<String, Double>();
 		for(String Departement : ConvertCSV.listeDepartements) {
-			moyenneVillesNO2.put(Departement, StatEtab.getMoyennePolluantNO2Ville(ConvertCSV.listeEtab, Departement, 2017));
-			moyenneVillesPM10.put(Departement, StatEtab.getMoyennePolluantPM10Ville(ConvertCSV.listeEtab, Departement, 2017));
-			moyenneVillesPM25.put(Departement, StatEtab.getMoyennePolluantPM25Ville(ConvertCSV.listeEtab, Departement, 2017));
+			moyenneDepartementsNO2.put(Departement, StatEtab.getMoyennePolluantNO2Ville(ConvertCSV.listeEtab, Departement, 2017));
+			moyenneDepartementsPM10.put(Departement, StatEtab.getMoyennePolluantPM10Ville(ConvertCSV.listeEtab, Departement, 2017));
+			moyenneDepartementsPM25.put(Departement, StatEtab.getMoyennePolluantPM25Ville(ConvertCSV.listeEtab, Departement, 2017));
 		}
 		TableauStat3 tab3 = new TableauStat3(moyenneDepartementsNO2, moyenneDepartementsPM10,moyenneDepartementsPM25);
 
