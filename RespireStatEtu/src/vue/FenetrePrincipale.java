@@ -144,9 +144,9 @@ public class FenetrePrincipale extends JFrame{
 		HashMap<String, Double> moyenneDepartementsPM10 = new HashMap<String, Double>();
 		HashMap<String, Double> moyenneDepartementsPM25 = new HashMap<String, Double>();
 		for(String Departement : ConvertCSV.listeDepartements) {
-			moyenneDepartementsNO2.put(Departement, StatEtab.getMoyennePolluantNO2Ville(ConvertCSV.listeEtab, Departement, 2017));
-			moyenneDepartementsPM10.put(Departement, StatEtab.getMoyennePolluantPM10Ville(ConvertCSV.listeEtab, Departement, 2017));
-			moyenneDepartementsPM25.put(Departement, StatEtab.getMoyennePolluantPM25Ville(ConvertCSV.listeEtab, Departement, 2017));
+			moyenneDepartementsNO2.put(Departement, StatEtab.getMoyennePolluantNO2Dpt(ConvertCSV.listeEtab, Departement, 2017));
+			moyenneDepartementsPM10.put(Departement, StatEtab.getMoyennePolluantPM10Dpt(ConvertCSV.listeEtab, Departement, 2017));
+			moyenneDepartementsPM25.put(Departement, StatEtab.getMoyennePolluantPM25Dpt(ConvertCSV.listeEtab, Departement, 2017));
 		}
 		TableauStat3 tab3 = new TableauStat3(moyenneDepartementsNO2, moyenneDepartementsPM10,moyenneDepartementsPM25);
 
@@ -172,9 +172,9 @@ public class FenetrePrincipale extends JFrame{
 				//HashMap<String, Double> moyenneDepartementsPM10 = new HashMap<String, Double>();
 				//HashMap<String, Double> moyenneDepartementsPM25 = new HashMap<String, Double>();
 				for(String Departement : ConvertCSV.listeDepartements) {
-					moyenneDepartementsNO2.put(Departement, StatEtab.getMoyennePolluantNO2Ville(ConvertCSV.listeEtab, Departement, 2017));
-					moyenneDepartementsPM10.put(Departement, StatEtab.getMoyennePolluantPM10Ville(ConvertCSV.listeEtab, Departement, 2017));
-					moyenneDepartementsPM25.put(Departement, StatEtab.getMoyennePolluantPM25Ville(ConvertCSV.listeEtab, Departement, 2017));
+					moyenneDepartementsNO2.put(Departement, StatEtab.getMoyennePolluantNO2Dpt(ConvertCSV.listeEtab, Departement, 2017));
+					moyenneDepartementsPM10.put(Departement, StatEtab.getMoyennePolluantPM10Dpt(ConvertCSV.listeEtab, Departement, 2017));
+					moyenneDepartementsPM25.put(Departement, StatEtab.getMoyennePolluantPM25Dpt(ConvertCSV.listeEtab, Departement, 2017));
 				}
 				TableauStat4 tab4 = new TableauStat4(moyenneDepartementsNO2, moyenneDepartementsPM10,moyenneDepartementsPM25);
 
@@ -184,7 +184,7 @@ public class FenetrePrincipale extends JFrame{
 
 				onglet5.add(spane);
 
-				onglets.addTab("Évolution par département 2017", onglet5);
+				onglets.addTab("Évolution annuelle par département", onglet5);
 
 
 				panel.add(onglets);
